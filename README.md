@@ -33,7 +33,7 @@ public static Result<Person> FindById(int id)
         return Result.Ok(person);
     }
 
-    return Result.Error($"Cannot find person with id {id}");
+    return Result.Error<Person>($"Cannot find person with id {id}");
 }
 ```
 
