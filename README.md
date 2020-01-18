@@ -22,7 +22,7 @@ Import the namespace
 using ExtraUtils;
 ```
 
-A result should be created using ``Result.Ok(...)`` for success
+A ``Result`` should be created using ``Result.Ok(...)`` for success
 or ```Result.Error(...)``` for errors.
 
 ```csharp
@@ -37,7 +37,7 @@ public static Result<Person> FindById(int id)
 }
 ```
 
-Then using the result
+Then using the ``Result``
 ```csharp
 Result<Person> result = FindById(138102);
 
@@ -56,7 +56,7 @@ to avoid possible exceptions.
 ```csharp
 int value = Result.Ok(123);
 ```
-If the result is an error ```InvalidOperationException``` will be
+If the ``Result`` is an error ```InvalidOperationException``` will be
 throw when trying to get the value.
 
 ```csharp

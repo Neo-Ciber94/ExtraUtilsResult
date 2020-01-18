@@ -78,5 +78,16 @@ namespace ExtraUtils.Tests
             Assert.NotEqual(0, counter[0]);
             Assert.Equal(1, counter[0]);
         }
+
+        [Fact()]
+        public void ThrowIfTypeTest()
+        {
+            Result result = Result.Error(new ArgumentException());
+            Exception exception = Record.Exception(() => result.ThrowIfType(typeof(ArgumentException)));
+            Assert.NotNull(exception);
+
+            exception = Record.Exception(() => result.ThrowIfType(typeof(InvalidCastException)));
+            Assert.Null(exception);
+        }
     }
 }
