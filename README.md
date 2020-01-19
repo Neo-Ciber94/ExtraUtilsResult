@@ -70,3 +70,21 @@ Result<int, Exception> result1 = Result.Ok<int, Exception>(10);
 Result<int> result2 = result1;
 Result result3 = result2;
 ```
+
+Also ``Result`` provides an equivalent of pattern matching
+
+```csharp
+Result<Person> result = FindByID(-12);
+string value = result.Match(p => p.Name, e => string.Empty);
+```
+
+Or an equivalent and more elegant expression
+
+```csharp
+Result<Person> result = FindByID(-12);
+
+string value = result.Match(
+    ok: p => p.Name, 
+    error: e => string.Empty
+);
+```

@@ -214,7 +214,7 @@ namespace ExtraUtils.Tests
         }
 
         [Fact()]
-        public void FoldTest()
+        public void MathTest1()
         {
             Result<int, string> result = Result.Ok<int, string>(10);
             var value = result.Match(e => "Ok", e => "Fail");
@@ -227,6 +227,26 @@ namespace ExtraUtils.Tests
             );
 
             Assert.Equal("Fail", value);
+        }
+
+
+        [Fact()]
+        public void MatchTest2()
+        {
+            Result<int, string> result = Result.Ok<int, string>(10);
+            int[] counter = new int[] { 0 };
+
+            result.Match(
+                ok: e =>
+                {
+                    counter[0] = 1;
+                    Assert.Equal(10, e);
+                },
+                error: e => { }
+            );
+
+            Assert.NotEqual(0, counter[0]);
+            Assert.Equal(1, counter[0]);
         }
 
         [Fact()]
