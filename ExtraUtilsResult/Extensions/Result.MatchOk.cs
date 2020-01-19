@@ -9,13 +9,13 @@ namespace ExtraUtils
         /// Performs the given action if the result is a success.
         /// </summary>
         /// <param name="result">The result.</param>
-        /// <param name="onSuccess">The action to perform.</param>
+        /// <param name="ok">The action to perform.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void OnSuccess(this Result result, Action onSuccess)
+        public static void MatchOk(this Result result, Action ok)
         {
             if (result.IsSuccess)
             {
-                onSuccess();
+                ok();
             }
         }
 
@@ -24,13 +24,13 @@ namespace ExtraUtils
         /// </summary>
         /// <typeparam name="T">Type of the value.</typeparam>
         /// <param name="result">The result.</param>
-        /// <param name="onSuccess">The action to perform.</param>
+        /// <param name="ok">The action to perform.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void OnSuccess<T>(this Result<T> result, Action<T> onSuccess)
+        public static void MatchOk<T>(this Result<T> result, Action<T> ok)
         {
             if (result.IsSuccess)
             {
-                onSuccess(result._value);
+                ok(result._value);
             }
         }
 
@@ -40,13 +40,13 @@ namespace ExtraUtils
         /// <typeparam name="T">Type of the value.</typeparam>
         /// <typeparam name="TError">The type of the error.</typeparam>
         /// <param name="result">The result.</param>
-        /// <param name="onSuccess">The action to perform.</param>
+        /// <param name="ok">The action to perform.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void OnSuccess<T, TError>(this Result<T, TError> result, Action<T> onSuccess)
+        public static void MathOk<T, TError>(this Result<T, TError> result, Action<T> ok)
         {
             if (result.IsSuccess)
             {
-                onSuccess(result._value);
+                ok(result._value);
             }
         }
     }

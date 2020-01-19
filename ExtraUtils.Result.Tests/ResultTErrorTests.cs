@@ -255,7 +255,7 @@ namespace ExtraUtils.Tests
             Result<int, string> result = Result.Ok<int, string>(10);
             int[] counter = new int[] { 0 };
 
-            result.OnSuccess(e => 
+            result.MathOk(e => 
             { 
                 counter[0] = 1;
                 Assert.Equal(10, e);
@@ -271,7 +271,7 @@ namespace ExtraUtils.Tests
             Result<int, string> result = Result.Error<int, string>("Invalid");
             int[] counter = new int[] { 0 };
 
-            result.OnError(e =>
+            result.MatchError(e =>
             {
                 counter[0] = 1;
                 Assert.Equal("Invalid", e);

@@ -54,7 +54,7 @@ namespace ExtraUtils.Tests
             Result result = Result.Ok(10);
             int[] counter = new int[] { 0 };
 
-            result.OnSuccess(() =>
+            result.MatchOk(() =>
             {
                 counter[0] = 1;
             });
@@ -69,7 +69,7 @@ namespace ExtraUtils.Tests
             Result result = Result.Error("Invalid");
             int[] counter = new int[] { 0 };
 
-            result.OnError(e =>
+            result.MatchError(e =>
             {
                 counter[0] = 1;
                 Assert.Equal("Invalid", e.Message);
