@@ -218,11 +218,11 @@ namespace ExtraUtils.Tests
         public void FoldTest()
         {
             Result<int> result = Result.Ok<int>(10);
-            var value = result.Fold(e => "Ok", e => "Fail");
+            var value = result.Match(e => "Ok", e => "Fail");
             Assert.Equal("Ok", value);
 
             result = Result.Error<int>("Error");
-            value = result.Fold(e => "Ok", e => "Fail");
+            value = result.Match(e => "Ok", e => "Fail");
             Assert.Equal("Fail", value);
         }
 
